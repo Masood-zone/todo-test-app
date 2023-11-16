@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa6";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import Modal from "../components/Modal";
+import TaskList from "../components/TaskList";
 let nextId = 3;
 const initialTasks = [
   { id: 0, text: "Visit Kafka Museum", isCompleted: true },
@@ -59,63 +60,17 @@ function MainTodoApp() {
       <main className="w-full relative h-full">
         <Modal onAddTask={handleAddTask} />
         {/* Display task list */}
-        <section className="w-[520px] h-[545px] mx-auto">
-          <ul>
-            {tasks.map((task) => (
-              <li
-                className="list-none flex items-center justify-between gap-2 py-3 border-b-2 border-b-indigo-200 hover:cursor-pointer"
-                key={task.id}
-              >
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={task.isCompleted}
-                    onChange={() => handleChangeTask(task.id)}
-                    className="w-[20px] h-[20px] checkbox checkbox-primary "
-                  />
-                  {editTaskId === task.id ? (
-                    <>
-                      <input
-                        type="text"
-                        value={newText}
-                        onChange={(e) => setNewText(e.target.value)}
-                        className="border-primary"
-                      />
-                      <button onClick={() => handleSaveEdit(task.id)}>
-                        Save
-                      </button>
-                      <button onClick={() => handleCancelClick()}>
-                        Cancel
-                      </button>
-                    </>
-                  ) : (
-                    <p
-                      className={`text-lg font-medium uppercase text-base-content ${
-                        task.isCompleted ? "line-through" : ""
-                      }`}
-                    >
-                      {task.text}
-                    </p>
-                  )}
-                </div>
-                <div className="flex items-center gap-1">
-                  <button
-                    className="btn-sm"
-                    onClick={() => handleEditClick(task.id)}
-                  >
-                    <CiEdit />
-                  </button>
-                  <button
-                    className="btn-sm"
-                    onClick={() => handleDeleteTask(task.id)}
-                  >
-                    <MdDeleteOutline />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <TaskList
+          tasks={tasks}
+          onChangeTask={handleChangeTask}
+          onDeleteTask={handleDeleteTask}
+          onEditTask={handleEditClick}
+          onSaveEdit={handleSaveEdit}
+          onCancelEdit={handleCancelClick}
+          editTaskId={editTaskId}
+          newText={newText}
+          setNewText={setNewText}
+        />
         <span className="absolute bottom-0 right-0 my-4">
           <button
             className="btn btn-circle bg-indigo-500 text-white"
