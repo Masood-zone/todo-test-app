@@ -4,14 +4,14 @@ import { GoSearch } from "react-icons/go";
 function TodoHeader({ title }) {
   return (
     <header className="w-full h-[135px] p-0 flex justify-center flex-col ">
-      <h1 className="uppercase py-3 font-bold text-3xl text-center text-accent">
+      <h1 className="uppercase py-3 font-bold text-3xl text-center text-primary">
         {title}
       </h1>
       <div className="py-3 flex items-center gap-2">
         <div className="flex items-center relative">
           <input
             type="text"
-            className="w-[595px] h-[38px] rounded-md border-2 border-primary  px-4 py-2 "
+            className="w-[595px] h-[38px] rounded-md border-2 border-primary bg-white px-4 py-2 "
             placeholder="Search..."
           />
           <span className="absolute right-2">
