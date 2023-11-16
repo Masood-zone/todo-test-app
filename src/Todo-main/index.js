@@ -1,8 +1,6 @@
 import { useState } from "react";
 import TodoHeader from "../components/TodoHeader";
 import { FaPlus } from "react-icons/fa6";
-import { CiEdit } from "react-icons/ci";
-import { MdDeleteOutline } from "react-icons/md";
 import Modal from "../components/Modal";
 import TaskList from "../components/TaskList";
 let nextId = 3;
@@ -59,7 +57,6 @@ function MainTodoApp() {
       <TodoHeader title="Todo List" />
       <main className="w-full relative h-full">
         <Modal onAddTask={handleAddTask} />
-        {/* Display task list */}
         <TaskList
           tasks={tasks}
           onChangeTask={handleChangeTask}
