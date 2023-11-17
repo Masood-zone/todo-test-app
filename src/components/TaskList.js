@@ -1,6 +1,7 @@
 import React from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
+import { ACTIONS } from "../Todo-main";
 
 export default function TaskList({
   tasks,
@@ -9,14 +10,18 @@ export default function TaskList({
   onEditTask,
   onSaveEdit,
   onCancelEdit,
-  editTaskId,
-  newText,
-  setNewText,
+  dispatch,
 }) {
+  const tasksList = tasks.tasks;
+  const editTaskId = tasks.editing;
+  const newText = tasks.newText;
+  const setNewText = (text) => {
+    dispatch({ type: ACTIONS.task_edited, text: text });
+  };
   return (
     <section className="w-[520px] h-[545px] mx-auto">
       <ul>
-        {tasks.map((task) => (
+        {tasksList.map((task) => (
           <li
             className="list-none flex items-center justify-between gap-2 py-3 border-b-2 border-b-indigo-200 hover:cursor-pointer"
             key={task.id}
