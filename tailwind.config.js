@@ -2,10 +2,17 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "focus-purple": "#8B5CF6",
+      },
+    },
   },
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["light", "dark"],
+  variants: {
+    extend: {
+      borderColor: ["focus"],
+    },
   },
+  darkMode: "selector",
+  plugins: [],
 };
